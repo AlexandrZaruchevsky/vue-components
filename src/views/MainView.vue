@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center pt-20">
+  <div class="flex items-start gap-2 justify-center pt-20">
     <card
       v-if="isShow"
       @close="closeForm"
@@ -19,6 +19,19 @@
         />
       </div>
     </card>
+    <button @click="isShow = !isShow">OK</button>
+    <card-drop-down :closeable="false">
+      <statistic-row
+        :getCount="getCountB"
+        title="Count record from table Clients"
+        class="border-b w-full"
+      />
+      <statistic-row
+        :getCount="getCountA"
+        title="Count records from table Terrs"
+        class="border-b"
+      />
+    </card-drop-down>
   </div>
 </template>
 
@@ -26,7 +39,7 @@
 import { ref } from "@vue/reactivity";
 import Card from "../components/Card.vue";
 import { onMounted } from "@vue/runtime-core";
-import axios from 'axios'
+import axios from "axios";
 export default {
   name: "MainView",
   components: {
@@ -39,20 +52,20 @@ export default {
     };
 
     const getCountB = async () => {
-      const count = await axios.get('https://jsonplaceholder.typicode.com/comments');
-      return count.data
+      const count = await axios.get(
+        "https://jsonplaceholder.typicode.com/comments"
+      );
+      return count.data;
     };
 
     const getCountA = async () => {
-      const count = await axios.get('https://jsonplaceholder.typicode.com/photos');
-      return count.data
+      const count = await axios.get(
+        "https://jsonplaceholder.typicode.com/photos"
+      );
+      return count.data;
     };
 
-
-
-    onMounted(async () => {
-
-    });
+    onMounted(async () => {});
     return {
       closeForm,
       isShow,

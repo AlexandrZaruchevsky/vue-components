@@ -47,4 +47,7 @@ export default {
     @apply border-t py-1 px-2;
   }
 }
+.card-header {
+  @apply flex justify-between font-semibold p-2 gap-2;
+}
 </style>
