@@ -54,10 +54,10 @@
     </p>
   </div>
   <div
-    class="bg-secondary-800 bg-opacity-40 fixed block h-full w-full top-0 overflow-y-auto"
+    class="bg-secondary-800 bg-opacity-40 absolute block h-full w-full top-0 overflow-y-auto"
     v-if="isShow"
   >
-    <div class="flex justify-center">
+    <div class="flex justify-center border h-full items-center">
       <div class="w-full sm:w-4/5 md:w-3/5 lg:w-1/2 xl:w-2/5 2xl:w-2/7">
         <card-drop-down
           :closeable="true"
