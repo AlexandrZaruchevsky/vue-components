@@ -7,16 +7,17 @@
     :fill="currentColor"
     @mouseover="hover"
     @mouseout="mouseOut"
+    class="text-center"
   >
-    <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
-    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" />
+    <path d="M0 0h24v24H0V0z" fill="none" />
+    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z" />
   </svg>
 </template>
 
 <script>
 import { ref } from "@vue/reactivity";
 export default {
-  name: "IExpandMore",
+  name: "IChevronRigth",
   props: {
     color: {
       type: String,

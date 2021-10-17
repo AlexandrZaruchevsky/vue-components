@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between">
+  <div class="flex justify-between gap-2">
     <span>{{ title }}</span>
     <strong class="value" v-if="complete">{{ count }}</strong>
     <span class="value" v-else>

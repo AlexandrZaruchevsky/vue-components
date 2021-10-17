@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-start gap-2 justify-center pt-20">
-    <card
+    <card-drop-down
       v-if="isShow"
       @close="closeForm"
       header="Statistics"
@@ -18,7 +18,7 @@
           class="border-b"
         />
       </div>
-    </card>
+    </card-drop-down>
     <button @click="isShow = !isShow">OK</button>
     <card-drop-down :closeable="false">
       <statistic-row
@@ -37,14 +37,10 @@
 
 <script>
 import { ref } from "@vue/reactivity";
-import Card from "../components/Card.vue";
 import { onMounted } from "@vue/runtime-core";
 import axios from "axios";
 export default {
   name: "MainView",
-  components: {
-    Card,
-  },
   setup() {
     const isShow = ref(true);
     const closeForm = () => {

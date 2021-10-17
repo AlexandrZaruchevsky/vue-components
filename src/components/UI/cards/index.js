@@ -1,3 +1,4 @@
-import CardDropDown from './CardDropDown.vue'
+import CardDropDown from "./CardDropDown.vue";
+import CardChildList from "./CardChildList.vue";
 
-export default [CardDropDown];
+export default [CardDropDown, CardChildList];

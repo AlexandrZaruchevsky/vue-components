@@ -8,7 +8,7 @@
         <header-button-close @click="$emit('close')" v-if="closeable" />
       </div>
     </div>
-    <div class="card-body" v-if="!isCardLess">
+    <div class="card-body" v-show="!isCardLess">
       <slot />
     </div>
     <div class="card-footer">{{ footer }}</div>
@@ -33,7 +33,7 @@ export default {
     },
   },
   setup() {
-    const isCardLess = ref(true);
+    const isCardLess = ref(false);
     const changeLess = () => {
       isCardLess.value = !isCardLess.value;
     };

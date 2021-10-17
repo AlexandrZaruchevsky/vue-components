@@ -7,7 +7,7 @@ module.exports = {
     colors:{
       transparent: 'transparent',
       current: 'currentColor',
-      primary: colors.trueGray,
+      primary: colors.teal,
       secondary: colors.trueGray,
       warn: colors.red,
       info: colors.orange,
