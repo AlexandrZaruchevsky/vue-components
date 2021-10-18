@@ -1,37 +1,44 @@
 <template>
-  <div class="flex flex-row gap-2 items-center">
+  <div class="item-list flex gap-2">
     <label class="w-1/4" for="input">{{ labelValue }}</label>
     <input
-      class="px-1 py-0.5 outline-none border-b focus:border-primary-700 w-3/4"
-      type="date"
-      v-model="input"
+      class="w-3/4 px-2"
+      type="text"
+      name="input"
+      id="input"
+      v-model="inputValue"
     />
   </div>
 </template>
 
 <script>
-import { computed } from '@vue/reactivity';
-
+import { computed } from "@vue/reactivity";
+import { onMounted } from "@vue/runtime-core";
 export default {
-  name: "LabelDateRow",
+  name: "ItemList",
   props: {
     labelValue: {
       type: String,
-      default: "labelValue",
+      default: () => "LABEL",
     },
     modelValue: {
       type: String,
-      default: "",
+      default: () => "",
     },
   },
   emits: ["update:modelValue"],
   setup(props, { emit }) {
-    const input = computed({
+    const inputValue = computed({
       get: () => props.modelValue,
       set: (val) => emit("update:modelValue", val),
     });
+
+    onMounted(() => {
+      console.log(props.modelValue);
+    });
+
     return {
-      input,
+      inputValue,
     };
   },
 };

@@ -6,26 +6,33 @@
       type="text"
       :placeholder="placeholder"
       v-model="input"
-      @input="$emit('update:modelValue', $event.target.value)"
     />
   </div>
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
+import { computed } from "@vue/reactivity";
 export default {
   name: "LabelInputRow",
   props: {
     labelValue: {
       type: String,
-      default: "labelValue"
+      default: "labelValue",
+    },
+    modelValue: {
+      type: String,
+      default: "",
     },
     placeholder: {
       type: String,
     },
   },
-  setup() {
-    const input = ref("");
+  emits:['update:modelValue'],
+  setup(props, {emit}) {
+    const input = computed({
+      get:()=>props.modelValue,
+      set:(val)=>emit('update:modelValue',val)
+    })
     return {
       input,
     };

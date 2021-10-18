@@ -14,17 +14,7 @@
               <form-person v-model="person" />
               <div class="p-2">
                 <card-child-list header="Address">
-                  <div class="flex flex-col gap-y-0.5 text-secondary-800">
-                    <label-input-row
-                      labelValue="postIndex"
-                      v-model="postIndex"
-                    />
-                    <label-input-row labelValue="country" v-model="country" />
-                    <label-input-row labelValue="region" v-model="region" />
-                    <label-input-row labelValue="district" v-model="district" />
-                    <label-input-row labelValue="location" v-model="location" />
-                    <label-input-row labelValue="street" v-model="street" />
-                  </div>
+                  <form-address v-model="address" />
                 </card-child-list>
               </div>
               <div class="flex justify-end px-2 py-1 gap-2">
@@ -40,33 +30,34 @@
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
+import { ref, reactive } from "@vue/reactivity";
 export default {
   setup() {
     const isShowCard = ref(true);
+    const person = reactive({
+      lastName: "Ivanov",
+      firstName: "Ivan",
+      middleName: "Ivanovich",
+      birthday: "1980-07-13",
+    });
+    const address = reactive({
+      postIndex: "164110",
+      country: "RF",
+      region: "Arkhangelsk region",
+      district: "Kargopol district",
+      location: "Kargopol",
+      street: "Forest",
+    });
 
-    const person =ref('');
-    const postIndex = ref("");
-    const country = ref("");
-    const region = ref("");
-    const district = ref("");
-    const location = ref("");
-    const street = ref("");
-
-    const clk=()=>{
-      console.log(person);
-    }
+    const clk = () => {
+      console.log({ ...person, ...address });
+    };
 
     return {
       isShowCard,
-      postIndex,
-      country,
-      region,
-      district,
-      location,
-      street,
       person,
-      clk
+      address,
+      clk,
     };
   },
 };
