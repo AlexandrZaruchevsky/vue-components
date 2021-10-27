@@ -35,7 +35,7 @@ export default {
     },
   },
   setup() {
-    const isExpand = ref(true);
+    const isExpand = ref(false);
     return {
       isExpand,
     };

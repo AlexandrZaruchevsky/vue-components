@@ -8,6 +8,7 @@
     <div class="body p-2">
       <item-list v-model="person.lastName" />
       <item-list v-model="person.firstName" />
+      <item-combo-box :options="options" v-model="gender" />
     </div>
     <div class="footer flex justify-between p-1">
       <button
@@ -25,24 +26,36 @@
 </template>
 
 <script>
-import { computed } from "@vue/reactivity";
+import { computed, ref } from "@vue/reactivity";
 import ItemList from "./ItemList.vue";
+import ItemComboBox from "./ItemComboBox.vue";
+import { watch } from "@vue/runtime-core";
 export default {
-  components: { ItemList },
+  components: { ItemList, ItemComboBox },
   props: {
     modelValue: {
       type: Object,
       default: () => ({}),
     },
   },
-  emits:['update:modelValue'],
-  setup(props, {emit}) {
+  emits: ["update:modelValue"],
+  setup(props, { emit }) {
+    const gender = ref("Man");
+    const options = ref([
+      { value: "Man", name: "Man" },
+      { value: "Woman", name: "Woman" },
+    ]);
     const person = computed({
-      get:()=>props.modelValue,
-      set:(val) =>emit('update:modelValue', val)
-    })
+      get: () => props.modelValue,
+      set: (val) => emit("update:modelValue", val),
+    });
+    watch(gender, (newGender) => {
+      console.log(newGender);
+    });
     return {
       person,
+      gender,
+      options,
     };
   },
 };
